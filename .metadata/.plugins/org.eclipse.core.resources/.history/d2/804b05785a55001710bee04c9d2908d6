@@ -1,8 +1,0 @@
-// 내 모듈을 외부에서 require 해서 쓸수 있도록 하는 키워드
-// controller 모듈은 기본으로 app 매개변수를 갖는다
-module.exports = function(app){
-	
-	
-	
-	
-}
