@@ -1,0 +1,17 @@
+// 내 모듈을 외부에서 require 해서 쓸수 있도록 하는 키워드
+// controller 모듈은 기본으로 app 매개변수를 갖는다
+module.exports = function(app){
+	
+		// client의 질의어
+		//					  req : client의 여러 정보가 담긴 객체
+		//						  res : client에게 보낼 객체
+	app.get('/hello',function(req,res){
+
+		res.send("안녕하세요");
+	
+	})
+}
+
+// controller 모듈을 선언하고
+// 메인 controller(app.js)에서 require를 해 줘야
+// 실제 서버 작동에 관여 된다.
