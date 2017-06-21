@@ -28,6 +28,8 @@ app.use('/users', users);
 // 사용자 정의 모듈은 여기에서 require한다.
 // 모듈을 require 하면서 app을 파라메터로 넘겨준다.
 var controller = require('./routes/controller.js')(app);
+var controller01 = require('./routes/controller01.js')(app);
+var crud = require('./routes/crud.js')(app);
 //controller(app)
 
 // catch 404 and forward to error handler
