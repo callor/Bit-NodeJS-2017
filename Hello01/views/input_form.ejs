@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2><%- pageTitle %></h2>
+	<form action='<%- action %>' method='post'>
+	<input type='hidden' name='id' value='<%- item._id %>'>
+	<table>
+		<tr>
+			<td>이름</td>
+			<td><input type='text' name='strName' value='<%- item.strName %>'></td>
+		</tr>
+		<tr>
+			<td>주소</td>
+			<td><input type='text' name='strAddr' value='<%- item.strAddr %>'></td>
+		</tr>
+		<tr>
+			<td>전화번호</td>
+			<td><input type='text' name='strTel' value='<%- item.strTel %>'></td>
+		</tr>
+		<tr>
+			<td>나이</td>
+			<td><input type='text' name='intAge' value='<%- item.intAge %>'></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type='submit'></td>
+		</tr>
+	</table>
+	
+	</form>
+
+</body>
+</html>
