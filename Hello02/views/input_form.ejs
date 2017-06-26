@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel='stylesheet' type='text/css' href='/stylesheets/input.css'>
+
+</head>
+<body>
+	<h2>도서정보 <%- pageTitle %></h2>
+
+	<form action='<%- action %>' method='post'>
+	<input type='hidden' name='id' value='<%- item._id %>'>
+	<table>
+		<tr>
+			<th>도서명</th>
+			<td class='year'><input type='text' name='strTitle' 
+									value='<%- item.strTitle %>'></td>
+		</tr>
+		<tr>
+			<th>출판사</th>
+			<td><input type='text' name='strComp'
+									value='<%- item.strComp %>'></td>
+		</tr>
+		<tr>
+			<th>출판연도</th>
+			<td class='year'><input type='text' name='strYear' 
+									value='<%- item.strYear%>'></td>
+		</tr>
+		<tr>
+			<th>가격</th>
+			<td><input type='text' name='intPrice'
+									value='<%- item.intPrice %>'></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><input type='submit'></td>
+		</tr>
+	</table>
+	</form>
+
+</body>
+</html>

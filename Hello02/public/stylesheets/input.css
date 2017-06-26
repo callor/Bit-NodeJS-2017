@@ -1,0 +1,29 @@
+table, th, td {
+	border : 1px solid black;
+	border-collapse:collapse;
+}
+
+th {
+	background-color : lightblue; 
+	color : yellow;
+	margin : 5px 5px 5px 5px;
+	padding: 5px;
+}
+
+td {
+	background-color : lightgray;
+	color : white;
+	text-align : right;
+	padding:10px;
+}
+
+input[type=text] {
+	padding:12px 20px;
+	margin:8px;
+	border: 1px solid #ccc;
+	border-radius:5px;
+}
+
+td.year {
+   background-color:red;
+}

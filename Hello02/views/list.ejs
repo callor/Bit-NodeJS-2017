@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel='stylesheet' type='text/css' href='/stylesheets/input.css'>
+</head>
+<body>
+	<h2>도서정보 검색</h2>
+	<hr />
+	<form action='/list' method='post'>
+		도서명 검색<input type='text' name='strTitle'><input type='submit'>
+	</form>
+	<hr />
+	<table>
+		<tr>
+			<th>도서명</th>
+			<th>출판사</th>
+			<th>발행연도</th>
+			<th>가격</th>
+			<th>비고</th>
+		</tr>
+
+		<% list.forEach(function(item){ %>
+		<tr>
+			<td><a href='/update/<%- item._id %>'><%- item.strTitle %></a></td>
+			<td><%- item.strComp %></td>
+			<td><%- item.strYear %></td>
+			<td><%- item.intPrice %></td>
+			<td><button onclick="location.href='/delete/<%- item._id %>'">삭제</td>
+		</tr>
+		<% }) %>
+
+	</table>
+	<button onclick="location.href='/insert' ">도서정보추가</button>
+</body>
+</html>
+
+
+
+
+
+

@@ -13,5 +13,6 @@ npm install -save ejs
 npm install -save express
 npm install -save morgan
 npm install -save serve-favicon
+npm install -save mongoose
 npm install
 
