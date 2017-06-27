@@ -60,13 +60,12 @@ module.exports = function(app, bookVO) {
 
 	app.post('/update', function(req, res) {
 		var id = req.body.id;
-		bookVO.update({
-			_id : id
-		}, {
-			$set : req.body
-		}, function(err, data) {
-			res.redirect('/list')
-		})
+		bookVO.update(
+				{_id : id}, 
+				{$set : req.body},
+				function(err, data) {
+					res.redirect('/list')
+				})
 	})
 	
 	app.get('/delete/:id',function(req,res){
