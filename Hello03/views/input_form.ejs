@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src='/js/form.js'></script>
+
+</head>
+<body>
+<header>
+	<h2>성적입력</h2>
+</header>
+<article id='input_form'>
+<form action='/insert' method='post'>
+
+		<!--  
+			input type에 사용할 수 있는 값
+			color, date, datetime-local, email, month,
+			number,range,search,tel,time 
+			url, week
+		 -->
+		<p>색깔<input type='color'>
+		<p>등록일자<input type='date' name='strDate' id='strDate'>
+		<p>학번<input type='text' name='strNum' placeholder='학번을 입력하세요' 
+				id='strNum' class='input_box'></p>
+				
+		<p>이름<input type='text' name='strName' placeholder='학생 이름을 입력하세요' 
+				id='strName' class='input_box'></p>
+				
+		<p>비밀번호<input type='password' name='strPasswd' id='strPasswd'>
+				
+		<p>국어<input type='text' name='intKor' placeholder='점수는 숫자만 입력하세요' 
+					id='intKor' class='input_box'></p>
+		<p>영어<input type='text' name='intEng' id='intEng' class='input_box'></p>
+		<p>수학<input type='text' name='intMath' id='intMath' class='input_box'></p>
+		<p>총점<input type='text' name='intTotal' id='intTotal' class='input_box'></p>
+		<p>평균<input type='text' name='intAvg' id='intAvg' class='input_box'></p>
+		<!-- button은 type을 임의 지정하지 않으면 submit으로 자동 지정되어 -->
+		<!-- submit()을 실행한 것과 같은 효과가 나타 난다. -->
+		<!-- 반드시 type='button'으로 지정해주어야 한다. -->
+		<p><button type='button' id='saveBtn'>저장</button>
+</form>
+</article>
+</body>
+</html>
+
+
+

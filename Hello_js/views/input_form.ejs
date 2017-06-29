@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table, th, td {
+	border: 1px solid lightblue;
+	border-collapse: collapse;
+	padding:20px;
+}
+
+td.A {
+	background-color:yellow;
+}
+
+td.A1 {
+	color:while;
+}
+
+td.A2 {
+	color:red;
+}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+
+function save(){
+	// alert('저장버튼 눌림')
+	var frm = document.book_insert;
+	if(frm.strTitle.value == ""){
+		alert('도서 이름을 입력하세요')
+		frm.strTitle.focus();
+		return
+	}
+	frm.submit(); // 서버로 데이터 전송하라
+}
+var cancel = function(){
+	alert('취소버튼 클릭')
+}
+var save2 = ()=>{
+}
+var insert_comp = ()=>{
+	document.getElementById('strComp').value = '영진출판사'
+}
+var changeTitle =()=>{
+	document.getElementById('pageTitle').innerHTML = '도서정보 클릭'
+	document.getElementById('pageTitle').style.color = '#669933'
+}
+
+</script>
+</head>
+
+<body>
+	<h2 onclick='changeTitle()' id='pageTitle'>도서정보등록</h2>
+	<form action='/insert' method='post' name='book_insert'>
+	<table>
+		<tr>
+			<td>도서명</td>
+			<td><input type='text' name='strTitle'></td>
+		</tr>
+		<tr>
+			<!-- class는 group 별로 공통된 효과를 주고자 할때 설정-->
+			<!-- class는 여러개의 class를 중복 적용할 수 있다 -->
+			<td  class='A A1 B1'onclick='insert_comp()'>출판사</td>
+			
+			<!-- id는 현재 문서내에서 유일한 key 값 -->
+			<td><input type='text' name='strComp' id='strComp'></td>
+		</tr>
+		<tr>
+			<td class='A A2 B2'>출판연도</td>
+			<td><input type='text' name='strYear' id='strYear'></td>
+		</tr>
+		<tr>
+			<td class='A A2 B3'>가격</td>
+			<td><input type='text' name='intPrice' id='intPrice'></td>
+		</tr>
+		<tr>
+			<td colspan=2>
+			<input type='button' value='저장' onclick='save()'>
+			<button onclick='cancel()'>취소</button>
+			</td>
+	</table>
+	</form>
+
+</body>
+</html>
+
+
+
+

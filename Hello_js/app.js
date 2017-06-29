@@ -4,25 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var dbConn = mongoose.connection; // connection;
-
-
-//dbConn.on('error',function(){
-//	console.err;
-//})
-
-mongoose.connect('mongodb://localhost/iot');
-//dbConn.open('localhost','iot');
-
-
-//dbConn.openUri('mongodb://localhost/iot',3000)
-
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
-
 
 var app = express();
 
@@ -41,9 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
-// 사용자 정의 controller, model 위치
-var studentVO = require('./models/studentVO.js');
-var mainController = require('./routes/mainController.js')(app,studentVO);
+var mainController = require('./routes/mainController.js')(app);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

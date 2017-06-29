@@ -4,25 +4,24 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
 var mongoose = require('mongoose');
-var dbConn = mongoose.connection; // connection;
+var dbConn = mongoose.connection;
+dbConn.once('open',()=>{
+	console.log('MongoDb Open Ok!!')
+})
 
-
-//dbConn.on('error',function(){
-//	console.err;
-//})
+dbConn.on('error',()=>{
+	console.err;
+})
 
 mongoose.connect('mongodb://localhost/iot');
-//dbConn.open('localhost','iot');
-
-
-//dbConn.openUri('mongodb://localhost/iot',3000)
+//var promise = mongoose.connect('mongodb://localhost/iotp',
+//		{ useMongoClient: true });
 
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
-
 
 var app = express();
 
@@ -40,10 +39,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-
-// 사용자 정의 controller, model 위치
-var studentVO = require('./models/studentVO.js');
-var mainController = require('./routes/mainController.js')(app,studentVO);
+var gradeVO = require('./models/gradeVO.js')
+var mainController = require('./routes/mainController.js')(app,gradeVO);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

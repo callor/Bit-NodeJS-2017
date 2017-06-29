@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+div#header {
+	background-color:black;
+	color:white;
+}
+
+div#article {
+	margin:5px;
+	padding:10px;
+	background-color:lightgrey;
+}
+
+div#section {
+	margin:5px;
+	padding:10px;
+	background-color:white;
+}
+
+div#footer {
+	background-color:black;
+	color:white;
+}
+
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	$('#article').css('color','red');
+	$('.A1').css('background-color','gray');
+
+	$('#header').click(function(){
+		$('.A2').css('background-color','red');
+	})
+	
+})
+
+</script>
+</head>
+<body>
+	<div id='header'>
+		<h2>JQuery 연습</h2>
+	</div>
+	<div id='article'>
+		<div id='section' class='A1'> 
+		이몸이 죽고 죽어 일백번 고쳐 죽어<br>
+		백골이 진토되어 넋이라도 있고 없고<br>
+		임 향한 일편단심 가실줄이 있으랴
+		</div>
+		<div id='section' class='A2'>
+		나보기가 역겨워 가실때에는<br>
+		말없이 고이 보내 드리오리다<br>
+		</div>
+	</div>
+	<div id='footer'>CopyRight ⓒ callor@callor.com</div>
+
+</body>
+<script>
+	// document.getElementById('article').style.color='yellow'
+</script>
+
+</html>

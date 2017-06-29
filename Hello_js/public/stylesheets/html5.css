@@ -1,0 +1,71 @@
+body {
+	font : 20px 굴림;
+}
+header {
+	color:blue;
+}
+
+article {
+	margin:5px;
+	padding:10px;
+	background-color:lightgray;
+}
+
+section {
+	margin:5px;
+	padding:10px;
+	background-color:white;
+}
+
+
+p#header {
+	
+	font-size : 20px;
+	font-style : italic;
+	font-weight : bold;
+	# em*16 = px
+}
+
+ul {
+	list-style-type:none; 
+	border : 1px solid #555;
+	padding:14px;
+	margin:0px;
+}
+
+li { 
+	 display: inline;
+ }
+
+li a {
+	color:#666;
+	text-align:center;
+	text-decoration:none;
+	padding: 14px;
+	
+}
+
+li a:hover {
+	background-color:#ddd;
+}
+
+
+.myclass {
+	
+	font-weight:bold;
+	font-size:30px;
+	color:blue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
