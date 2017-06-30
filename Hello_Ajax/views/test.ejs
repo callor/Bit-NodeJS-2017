@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#list_body").click(function(){
+		// $("#mbody").text("대한민국");
+		// $("#mbody").html("<h1>Republic of Korea</h1>")
+		// ajax 클래스를 이용해서 서버에 질의를 한다.
+		$.ajax({
+			type : 'GET' ,   // 서버에 질의할때 사용할 method(택배)
+			url : '/listbody' , /// 서버에 질의할 주소
+			dataType : 'text', // 서버로 부터 받을 데이터 종류
+			success : function(data) { // 서버로 부터 정상적으로 값을 받았을때 할일
+				$("#mbody").html(data);
+			}
+		})
+	})
+})
+</script>
+</head>
+<body>
+<p><input type='text'>
+<p id="mbody">우리나라만세</p>
+<p><button id="list_body">리스트 가져오기</button>
+</body>
+</html>

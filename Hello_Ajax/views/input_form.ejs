@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include header.ejs %>
+<script>
+$(document).ready(function(){
+
+	$("#saveBtn").click(function(){
+
+		if($("#strNum").val() == ""){
+			alert("학번을 입력해주세요")
+			$("#strNum").focus()
+			return
+		}
+		if($("#strName").val() == ""){
+			alert("학생이름을 입력해주세요")
+			$("#strName").focus()
+			return
+		}
+		// 값 검사가 끝나면 서버로 전송하라
+		$('form').submit();
+		
+		// list_body 함수를 이용해서 서버로부터 list_body 를 받아온다
+		list_body();
+		
+	})
+	
+	$("#listBtn").click(function(){
+		list_body();
+	})
+
+	function list_body(){
+		
+		// ajax 클래스를 이용해서 서버에 질의를 한다.
+		$.ajax({
+			type : 'GET' ,   // 서버에 질의할때 사용할 method(택배)
+			url : '/listbody' , /// 서버에 질의할 주소
+			dataType : 'text', // 서버로 부터 받을 데이터 종류
+			success : function(data) { // 서버로 부터 정상적으로 값을 받았을때 할일
+				$("#list_body").html(data);
+			}
+		})
+	}
+})
+
+
+</script>
+</head>
+<body>
+	<% include nav.ejs %>
+	<header class="w3-container w3-blue  w3-margin">
+		<h3>학생 정보 입력</h3>
+	</header>
+	<article class="w3-container w3-margin w3-light-gray">
+		<section class="w3-col m5 l5 s5 w3-white w3-margin w3-padding-16">
+			<form action="/insert" method="post">
+				<P>
+					<label>학번</label> <input type='number' name='strNum' id='strNum'
+						class='w3-input'>
+				<P>
+					<label>학생이름</label> <input type='text' name='strName' id='strName'
+						class='w3-input'>
+				<P>
+					<label>학년</label> <input type='number' name='intGrade'
+						id='intGrade' class='w3-input'>
+				<P>
+					<label>전화번호</label> <input type='tel' name='strTel' id='strTel'
+						class='w3-input'>
+				<p>
+					<button type='button' id="saveBtn"
+						class="w3-button w3-red w3-right">저장</button>
+					<button type='button' id="listBtn"
+						class="w3-button w3-blue w3-right">리스트 새로고침</button>
+
+
+			</form>
+		</section>
+		<section class="w3-col m6 l6 s6 w3-white w3-margin w3-padding-16" 
+		id="list_body">
+		</section>
+	</article>
+</body>
+</html>

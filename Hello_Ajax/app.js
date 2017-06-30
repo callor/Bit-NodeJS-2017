@@ -4,24 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+//=============================================
 var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
 var dbConn = mongoose.connection;
-dbConn.once('open',()=>{
-	console.log('MongoDb Open Ok!!')
+
+dbConn.once('open',function(){
+	console.log('MongoDB Open OK')
 })
 
-dbConn.on('error',()=>{
+dbConn.on('error',function(){
 	console.err;
 })
-
-//mongoose.connect.openUri('mongodb://localhost/iot')
-mongoose.connect('mongodb://localhost/iot') // ,{ useMongoClient: true });
-//var promise = mongoose.connect('mongodb://localhost/iotp',
-//		);
-//dbConn.connect('mongodb://localhost/iotp')
-
+mongoose.connect('mongodb://localhost/iot');
+//==============================================
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -41,8 +36,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-var gradeVO = require('./models/gradeVO.js')
-var mainController = require('./routes/mainController.js')(app,gradeVO);
+
+var studentVO = require('./models/studentVO.js')
+var mainController = require('./routes/mainController.js')(app,studentVO);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

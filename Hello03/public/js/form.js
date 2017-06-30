@@ -9,7 +9,7 @@ $(document).ready(()=>{
 		
 //		alert(event.keyCode)
 		// 눌린키가 Enter가 아니면 진행 금지
-		if(event.keyCode != 9) return; // 9 번 Tab key
+		if(event.keyCode != 13) return; // 9 번 Tab key
 		var thisId = $(this).attr('id'); 
 
 		
@@ -18,10 +18,10 @@ $(document).ready(()=>{
 		if(thisId == 'intKor' || 
 			thisId == 'intEng' ||
 			thisId == 'intMath' ) sumNum();
-		
-		$(this).next('p').css('color','red')// .focus();
 
-		
+//		$(this).next('input').focus()// .focus();
+		 $(this).parent().next().find('input').focus()
+
 //		if(thisId == 'intKor') sumNum();
 //		if(thisId == 'intEng') sumNum();
 //		if(thisId == 'intMath') sumNum();
@@ -35,7 +35,7 @@ $(document).ready(()=>{
 			$("#strName").focus();
 			return;
 		}
-//		$('form').submit();
+		$('form').submit();
 		
 	})
 	
