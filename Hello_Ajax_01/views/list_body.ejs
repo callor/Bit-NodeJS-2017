@@ -1,0 +1,37 @@
+<script>
+$(document).ready(function(){
+	
+	$('tr').click(function(){
+		var id=$(this).attr('id'); // tr의 id에 설정된 _id 값을 추출해 낸다
+		$.get('/getItem',{_id:id},
+				function(data){
+					$("#id").val(data._id);
+					$("#strTitle").val(data.strTitle);
+					$("#strComp").val(data.strComp);
+					$("#strGenre").val(data.strGenre);
+					$("#strYear").val(data.strYear);
+					$("#intPrice").val(data.intPrice);
+				})
+	})
+	
+})
+</script>
+<table class='w3-table w3-border w3-hoverable'>
+	<tr>
+		<th>도서명</th>
+		<th>출판사</th>
+		<th>장르</th>
+		<th>출판연도</th>
+		<th>가격</th>
+	</tr>
+	
+	<% list.forEach(function(item){ %>
+	<tr id='<%- item._id %>'>
+		<td><%- item.strTitle %></td>
+		<td><%- item.strComp %></td>
+		<td><%- item.strGenre %></td>
+		<td><%- item.strYear %></td>
+		<td><%- item.intPrice %></td>
+	</tr>
+	<% }) %>
+</table>

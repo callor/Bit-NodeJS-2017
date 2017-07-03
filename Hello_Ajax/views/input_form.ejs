@@ -5,6 +5,10 @@
 <script>
 $(document).ready(function(){
 
+	$("#newBtn").click(function(){
+		$('input').val("");
+	})
+	
 	$("#saveBtn").click(function(){
 
 		if($("#strNum").val() == ""){
@@ -17,10 +21,30 @@ $(document).ready(function(){
 			$("#strName").focus()
 			return
 		}
-		// 값 검사가 끝나면 서버로 전송하라
-		$('form').submit();
 		
+		// 값 검사가 끝나면 서버로 전송하라
+		// 이때 form에 담긴 데이터를 serialize해 줘야 한다.
+		if($("#_id").val() == "" )
+			$.post('/insert',$("form").serialize());
+		else
+			$.post('/update',$("form").serialize());
+
 		// list_body 함수를 이용해서 서버로부터 list_body 를 받아온다
+		list_body();
+		
+	})
+	
+	$("#deleteBtn").click(function(){
+		if($("#_id").val() == "" ){
+			alert("삭제할 학생을 클릭하세요")
+			return ;
+		} else {
+			var alertString = "학번:"+$("#strNum").val() + "\n"
+				alertString += "학생이름:"+$("#strName").val()
+			if(confirm(alertString + "\n" + "학생정보를 정말 삭제할까요?"))
+				$.post('/delete',{id:$("#_id").val()});
+		}
+		$('input').val("");
 		list_body();
 		
 	})
@@ -32,6 +56,7 @@ $(document).ready(function(){
 	function list_body(){
 		
 		// ajax 클래스를 이용해서 서버에 질의를 한다.
+		/*
 		$.ajax({
 			type : 'GET' ,   // 서버에 질의할때 사용할 method(택배)
 			url : '/listbody' , /// 서버에 질의할 주소
@@ -39,6 +64,11 @@ $(document).ready(function(){
 			success : function(data) { // 서버로 부터 정상적으로 값을 받았을때 할일
 				$("#list_body").html(data);
 			}
+		})
+		*/
+		// get 클래스를 이용하면 ajax와 같은 효과를 낸다.
+		$.get('/listbody',function(data){
+			$("#list_body").html(data);
 		})
 	}
 })
@@ -49,35 +79,35 @@ $(document).ready(function(){
 <body>
 	<% include nav.ejs %>
 	<header class="w3-container w3-blue  w3-margin">
-		<h3>학생 정보 입력</h3>
+		<h3 id='pageTitle'>학생 정보 입력</h3>
 	</header>
 	<article class="w3-container w3-margin w3-light-gray">
 		<section class="w3-col m5 l5 s5 w3-white w3-margin w3-padding-16">
 			<form action="/insert" method="post">
+				<input type="text" name="_id" id = "_id">
 				<P>
-					<label>학번</label> <input type='number' name='strNum' id='strNum'
-						class='w3-input'>
+					<label>학번</label> 
+					<input type='number' name='strNum' id='strNum' class='w3-input'>
 				<P>
-					<label>학생이름</label> <input type='text' name='strName' id='strName'
-						class='w3-input'>
+					<label>학생이름</label>
+					<input type='text' name='strName' id='strName' class='w3-input'>
 				<P>
-					<label>학년</label> <input type='number' name='intGrade'
-						id='intGrade' class='w3-input'>
+					<label>학년</label> 
+					<input type='number' name='intGrade' id='intGrade' class='w3-input'>
 				<P>
 					<label>전화번호</label> <input type='tel' name='strTel' id='strTel'
 						class='w3-input'>
-				<p>
-					<button type='button' id="saveBtn"
-						class="w3-button w3-red w3-right">저장</button>
-					<button type='button' id="listBtn"
-						class="w3-button w3-blue w3-right">리스트 새로고침</button>
-
-
+				<p class="w3-right">
+					<button type='button' id="listBtn" class="w3-button w3-blue">리스트 새로고침</button>
+					<button type='button' id="newBtn" class="w3-button w3-gray">새로등록</button>
+					<button type='button' id="saveBtn" class="w3-button w3-green">저장</button>
+					<button type='button' id="deleteBtn" class="w3-button w3-red">삭제</button>
+					
+				</p>
 			</form>
 		</section>
-		<section class="w3-col m6 l6 s6 w3-white w3-margin w3-padding-16" 
-		id="list_body">
-		</section>
+		<section class="w3-col m6 l6 s6 w3-white w3-margin w3-padding-16"
+			id="list_body"></section>
 	</article>
 </body>
 </html>

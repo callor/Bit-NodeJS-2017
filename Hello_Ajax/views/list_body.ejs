@@ -1,3 +1,24 @@
+<script>
+$(document).ready(function(){
+	$('tr').click(function(){
+		var id = $(this).attr('id');
+		$.get('/getstudent',{id:id},function(data){
+			$("#pageTitle").text("학생정보 수정");
+			$("#_id").val(data._id);
+			$("#strNum").val(data.strNum);
+			$("#strName").val(data.strName);
+			$("#intAge").val(data.intAge);
+			$("#strTel").val(data.strTel);
+			
+			// alert(data.strName)
+			
+		})
+		// alert(id)
+	})
+})
+
+
+</script>
 <article class="w3-container w3-light-gray w3-margin">
 	<section class="w3-white">
 		<table class="w3-table w3-border w3-hoverable">
@@ -8,7 +29,7 @@
 				<th>전화번호</th>
 			</tr>
 			<% list.forEach(function(item){ %>
-			<tr>
+			<tr id='<%- item._id %>' >
 				<td><%- item.strNum %></td>
 				<td><%- item.strName %></td>
 				<td><%- item.intGrade %></td>

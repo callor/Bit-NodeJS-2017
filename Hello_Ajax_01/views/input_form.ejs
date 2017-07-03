@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include header.ejs %>
+<script>
+$(document).ready(function(){
+	
+	$("#deleteBtn").click(function(){
+		if($("#id").val() == ""){
+			alert("삭제할 자료를 선택하세요")
+			return
+		}
+		if( confirm("정말 삭제 할까요")){
+			$.post('/delete',{id:$("#id").val()})
+			$("#listBtn").click()
+			$('input').val("");
+		}
+	})
+	$("#newBtn").click(function(){
+		$('input').val("");
+	})
+	$("#listBtn").click(function(){
+		
+		$.get('/list',function(data){
+			$('#listbody').html(data)
+		})
+	})
+	
+	$('#saveBtn').click(function(){
+
+		if($("#strTitle").val() == ""){
+			alert("도서명을 입력하세요")
+			$("#strTitle").focus();
+			return ;
+		}
+		
+		if($("#strComp").val() == ""){
+			alert("출판사 명을 입력하세요")
+			$("#strComp").focus();
+			return;
+		}
+
+		if($("#id").val() == "") {
+			$.post('/insert',$('form').serialize(),
+					function(data){
+						if(data.msg == "ok") alert('데이터를 정상적으로 저장했습니다')
+						$("#listBtn").click();
+						$('input').val("");
+					}
+			);
+		} else {
+			$.post('/update',$('form').serialize(),
+				function(data){
+					$("#listBtn").click() ; // 리스트 갱신
+				}		
+			)
+		}
+
+		
+		
+		/*
+		$.ajax({
+			type:'POST',
+			url : '/insert',
+			datatype:json,
+			success:function()
+		})
+		*/
+	})
+})
+
+
+</script>
+</head>
+<body>
+<!--   컨테이너로 지정 바탕색을 blue 로 설정 -->
+<header class='w3-container w3-blue w3-margin'>
+	<h3>도서 정보 입력</h3>
+</header>
+<article class='w3-container w3-light-gray w3-margin'>
+	<section class='w3-col m5 l5 s5 w3-white w3-margin w3-padding-16'>
+	<form id='input_form'>
+		<input type='hidden' name='id' id='id'>
+		<p>
+		<label class='w3-text-blue'><b>도서명</b></label>
+		<input type='text' name='strTitle' id='strTitle' class='w3-input w3-border'>
+		
+		<p>
+		<label class='w3-text-blue'><b>출판사</b></label>
+		<input type='text' name='strComp' id='strComp' class='w3-input w3-border w3-round'>
+		
+		<p>
+		<label class='w3-text-blue'><b>장르</b></label>
+		<input type='text' name='strGenre' id='strGenre' class='w3-input w3-animate-input' style='width:30%'>
+		
+		<p>
+		<label class='w3-text-blue'><b>출판연도</b></label>
+		<input type='text' name='strYear' id='strYear' class='w3-input w3-animate-input' style='width:30%'>
+		
+		<p>
+		<label class='w3-text-blue'><b>가격</b></label>
+		<input type='number' name='intPrice' id='intPrice' class='w3-input'>
+		
+		<p class='w3-right'>
+		<button type='button' id='newBtn' class='w3-button w3-green'>
+		새로쓰기
+		</button>
+
+		<button type='button' id='listBtn' class='w3-button w3-green'>
+		리스트 보기
+		</button>
+		<button type='button' id='saveBtn' class='w3-button w3-blue'>
+		저장
+		</button>
+		<button type='button' id='deleteBtn' class='w3-button w3-red'>
+		삭제
+		</button>
+		
+		</form>
+	</section>
+	<section id='listbody' class='w3-col m6 l6 s6 w3-white w3-margin w3-padding-16'>
+	</section>
+
+</article>
+</body>
+</html>
