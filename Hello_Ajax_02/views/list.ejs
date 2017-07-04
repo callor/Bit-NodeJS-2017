@@ -1,0 +1,31 @@
+<script>
+$(document).ready(function(){
+	$('tr').click(function(){
+		var id = $(this).attr('id') // tr tag에 붙인 id 값을 추출
+		$.post('/getitem',{id:id},function(result){ // 추출한 id를 서버로 보내서 book 정보를 가져온다
+			$('#strTitle').val(result.strTitle) // 가져온 정보를 input text에 넣어준다.
+			$('#strComp').val(result.strComp)
+			$('#strGenre').val(result.strGenre)
+			$('#intPrice').val(result.intPrice)
+			
+			$('#id').val(result._id)
+		})
+	})
+})
+</script>
+<table class='w3-table w3-border w3-hoverable'>
+	<tr>
+		<th>도서명</th>
+		<th>출판사</th>
+		<th>장르</th>
+		<th>가격</th>
+	</tr>
+	<% list.forEach(function(item){ %>
+	<tr id='<%- item._id %>' >
+		<td><%- item.strTitle %></td>
+		<td><%- item.strComp %></td>
+		<td><%- item.strGenre %></td>
+		<td><%- item.intPrice %></td>
+	</tr>	
+	<% }) %>
+</table>
