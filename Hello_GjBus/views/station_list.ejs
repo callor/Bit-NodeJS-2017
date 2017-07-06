@@ -1,0 +1,32 @@
+<script>
+$(document).ready(function(){
+	
+	$('.stationlist').click(function(){
+		var id = $(this).attr('id')
+
+		$.post('/gjbus/bustop',{id:id},function(result){
+			$('#busstop').html(result)
+		})
+	})
+})
+</script>
+<h4>정류장 정보</h4>
+<table class='w3-table w3-border w3-hoverable'>
+	<tr>
+		<th>정류장명</th>
+		<th>다음 정류장</th>
+		<th>정류장 번호</th>
+		<th>정류장 ID</th>
+	</tr>
+
+	<% list.forEach(function(item){ %>
+
+	<tr class='stationlist' id='<%- item.BUSSTOP_ID %>'>
+		<td><%- item.BUSSTOP_NAME %></td>
+		<td><%- item.NEXT_BUSSTOP %></td>
+		<td><%- item.STATION_NUM %></td>
+		<td><%- item.BUSSTOP_ID %></td>
+	</tr>
+	
+	<% }) %>
+</table>

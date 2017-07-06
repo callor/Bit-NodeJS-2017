@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><% include header.ejs %>
+<script src='/js/main.js'></script>
+</head>
+<body class='w3-light-gray'>
+	<header class='w3-margin w3-padding-16 w3-blue'>
+		<h3>버스 도착 정보 검색 시스템</h3>
+	</header>
+	<article>
+		<section  class='w3-container w3-margin w3-padding-16 w3-white'>
+			<p>
+			<label class='w3-text-blue'><b>정류장 이름</b></label>
+			<input class='w3-input w3-border' 
+						type='text' name='strStation' id='strStation'
+						placeholder='정류장 이름을 입력후 Enter...'>
+		</section>
+		<section class='w3-container w3-margin w3-padding-16 w3-white'>
+			<section id='listbody' class='w3-col m6 l6 s6'>
+			</section>
+			
+			<section id='busstop' class='w3-col m5 l5 s5'>
+			</section>
+		</section>
+	</article>
+</body>
+</html>

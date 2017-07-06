@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head><% include header.ejs %>
+<style>
+#view_right {
+	overflow:auto; /* scroll bar */
+	
+	
+}
+</style>
 </head>
 <body>
 	<header class='w3-container w3-margin w3-padding-16 w3-blue'>
@@ -11,7 +18,7 @@
 		<% include input_form.ejs %>
 		</section>
 		<span class='w3-col m1 l1 s1'></span>
-		<section id='view_right' class='w3-col m5 l5 s5 w3-margin w3-padding w3-white'></section>
+		<section id='view_right' class='w3-right w3-col m6 l6 s6 w3-scroll w3-margin w3-padding w3-white'></section>
 	</article>
 	<footer class='w3-container w3-margin w3-padding-16'></footer>
 </body>
