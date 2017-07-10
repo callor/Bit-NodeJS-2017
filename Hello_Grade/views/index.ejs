@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include  header.ejs %>
+</head>
+<body class='w3-light-gray w3-padding-16'>
+
+	<header class='w3-container w3-blue w3-margin'>
+		<h3 class='w3-padding-16'>성적관리</h3>
+	</header>
+
+	<article class='w3-container w3-margin w3-padding w3-white'>
+		<!--  성적 입력 폼 -->
+		<section class='w3-col m5 l5 s5 w3-margin w3-padding-16'>
+		<% include input_form.ejs %>
+		</section>
+		
+		<!-- 성적 리스트 body -->
+		<section id='list_body' class='w3-col m6 l6 s6 w3-margin w3-padding-16'>
+		</section>
+	</article>
+
+</body>
+</html>
