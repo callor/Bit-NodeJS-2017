@@ -1,0 +1,36 @@
+<style>
+a:link {
+	text-decoration:none;
+}
+
+a:visited {
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:none;
+	color:blue;
+}
+
+a:active {
+	text-decoration:none;
+	color:hotpink;
+}
+
+
+</style>
+
+
+<section class='w-row'>
+	<% newses.forEach(function(news){ %>
+		<ul class='w3-ul w3-hoverable'>
+			<li class='w3-card w3-margin'>
+				<a href='<%- news.link%>' target='_news'> 		
+				<h4><%- news.title %></h4>
+				</a>
+				<p><%- news.description %></p>
+				<p><a href='<%- news.originallink %>' target='_comp'>[언론사 바로가기]</a></p>
+			</li>
+		</ul>
+	<% }) %>
+</section>

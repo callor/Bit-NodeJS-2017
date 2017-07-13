@@ -1,0 +1,51 @@
+<style>
+a:link {
+	text-decoration:none;
+}
+
+a:visited {
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:none;
+	color:blue;
+}
+
+a:active {
+	text-decoration:none;
+	color:hotpink;
+}
+
+ul.itemBox {
+	height:300px;
+	overflow:auto;
+}
+
+</style>
+
+
+<section class='w-row'>
+	<% blogs.forEach(function(blog){ %>
+		<ul class='w3-ul w3-hoverable w3-col l5 s5 m5 itemBox'>
+			<li class='w3-card w3-margin'>
+				<a href='<%- blog.link%>' target='_blog'> 		
+				<h4><%- blog.title %></h4>
+				</a>
+				<p><%- blog.description %></p>
+				<p>작성일:<%- blog.postdate %><p>
+				<p>
+				<a href='<%- blog.bloggerlink %>' target='_blogger'>
+				<b class='w3-text-blue'><%- blog.bloggername %></b>
+				</a>
+				</p>
+			</li>
+		</ul>
+	<% }) %>
+</section>
+
+
+
+
+
+
