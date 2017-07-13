@@ -60,8 +60,10 @@ typings/
 .metadata/
 RemoteSystemsTempFiles/
 
-
 # mySec File
 
 myData.go.kr.key.js
 naver_secret.js
+
+# ETC
+.bak
