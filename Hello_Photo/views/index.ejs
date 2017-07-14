@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include  header.ejs %>
+<script>
+$(document).ready(function(){
+	$('#photoUpload').click(function(){
+
+		$(location).attr('href','/upload')
+		
+	})
+})
+
+</script>
+</head>
+<body class='w3-container w3-margin w3-light-gray'>
+<% include pageTitle.ejs %>
+<article>
+	<section class='w3-padding-16'>
+		<button id='photoUpload' type='button' class='w3-button w3-yellow w3-block'>사진 올리기</button>
+	</section>
+	
+	<section class='w3-padding-16'>
+		<% photos.forEach(function(photo){ %>
+		<article class='w3-card-2 w3-col l3 m3 s3 w3-padding-16 w3-margin'>
+			<img src='/photos/<%- photo.photoName %>' 
+					class='w3-round' width='100%'>
+			<section class='w3-container w3-margin'>
+				<!-- 사진 갤러리 제목 -->
+				<p><b><%- photo.strTitle %></b></p>
+				<!-- 사진 설명 -->
+				<p><%- photo.strText %></p>
+			</section>
+		</article>
+		<% }) %>
+	</section>
+
+</article>
+</body>
+</html>
