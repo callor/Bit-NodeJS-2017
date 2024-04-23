@@ -11,7 +11,7 @@
     "debug": "^2.6.9",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
-    "mongoose": "^5.7.5",
+    "mongoose": "^5.13.20",
     "morgan": "^1.9.1",
     "mpromise": "^0.5.5",
     "serve-favicon": "^2.4.3"
